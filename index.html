@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Mobile Number Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #app {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px;
+            background: linear-gradient(135deg, #ff5252, #ff7eb3);
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff7eb3, #ff5252);
+            transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(255, 82, 82, 0.4);
+        }
+
+        #result {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>📞 Indian Mobile Number Validator</h1>
+        <input type="text" id="phone-input" placeholder="Enter Mobile Number" required>
+        <button id="validate-btn">✅ Validate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("validate-btn").addEventListener("click", function () {
+            const phoneNumber = document.getElementById("phone-input").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            const regex = /^(?:\+91|91)?[6789]\d{9}$/;
+
+            if (regex.test(phoneNumber)) {
+                resultDiv.textContent = "✅ Valid Indian Number: " + phoneNumber;
+                resultDiv.className = "valid";
+            } else {
+                resultDiv.textContent = "❌ Invalid Indian Number!";
+                resultDiv.className = "invalid";
+            }
+        });
+    </script>
+</body>
+</html>
